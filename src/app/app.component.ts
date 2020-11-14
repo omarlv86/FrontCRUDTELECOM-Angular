@@ -11,7 +11,7 @@ export class AppComponent {
 
   calculateClasses() {
     return {
-        'is-active': this.show
+        'show': this.show
     };
   }
 
