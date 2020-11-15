@@ -7,6 +7,7 @@ import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
 
 import { RouterModule, Routes } from '@angular/router'; //importar modulo Router
+import { HttpClientModule } from '@angular/common/http'; //importar modulo HTTP
 
 const appRoutes: Routes = [
   { path: 'add', component: AddComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
       //{ enableTracing: true } // <-- debugging purposes only

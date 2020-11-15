@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 py-3">
       <h2 class="text-center">Ver empleados</h2>
     </div>
   </div>
@@ -21,6 +21,21 @@
               <th colspan="2">Opciones</th>
           </tr>
         </thead>
+        <tbody>
+          <tr *ngFor="let emp of employees">
+            <th><span class="font-weight-light">{{emp.id}}</span></th>
+            <th><span class="font-weight-light">{{emp.nombre}}</span></th>
+            <th><span class="font-weight-light">{{emp.apellidop}}</span></th>
+            <th><span class="font-weight-light">{{emp.apellidom}}</span></th>
+            <th><span class="font-weight-light">{{emp.fechanac}}</span></th>
+            <th><span class="font-weight-light">{{emp.puesto}}</span></th>
+            <th><span class="font-weight-light">{{emp.salario}}</span></th>
+            <th><span class="font-weight-light">{{emp.correo}}</span></th>
+            <th><span class="font-weight-light">{{emp.contratista ? 'Si': 'No'}}</span></th>
+            <th><button class="btn btn-warning" (click)="edit(emp)">Edit</button></th>
+            <th><button class="btn btn-danger" (click)="delete(emp)">Delete</button></th>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
