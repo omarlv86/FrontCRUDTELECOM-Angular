@@ -18,7 +18,7 @@ export class AppComponent {
   show = false;
   cambiarEstado(){
   this.show = !this.show;
-  console.log("Click en el boton de menu" + this.show);
+  //console.log("Click en el boton de menu" + this.show);
   this.calculateClasses();
   }
 

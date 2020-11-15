@@ -1,1 +1,86 @@
-<p>add Component works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 py-3 mx-auto">
+      <div class="row py-3">
+        <h2 class="mx-auto">Agregar empleado</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="exampleInputEmail1">Nombre</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="exampleInputPassword1">Apellido paterno</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="exampleInputPassword1">Apellido materno</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <!--Input Fecha de Nacimiento-->
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" id="exampleInputPassword1">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!--Input correo-->
+                <div class="form-group">
+                  <label for="correo" >E-mail: </label>
+                  <input type="email" formControlName="correo" placeholder="Correo electronico" name="correo" class="form-control">
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Puesto</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!--Input Salario-->
+                <div class="form-group input-group-sm mb-3">
+                  <label for="salario">Salario: </label>
+                  <input type="number" formControlName="salario" placeholder="Salario del trabajador" name="salario" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!--Input contratista-->
+                <div class="form-group input-group-sm mb-3">
+                  <label for="contratista" >Contratista: </label>
+                  <select name="contratista" class="form-control" formControlName="contratista" placeholder="Seleccione una opcion">
+                      <option value="" disabled selected>Seleccione si es contratista</option>
+                      <option value="0">No</option>
+                      <option value="1">Si</option>
+                  </select>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 ml-auto">
+                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
