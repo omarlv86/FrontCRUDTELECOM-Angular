@@ -6,26 +6,33 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form action="">
+          <form  class="form" [formGroup]="addForm" novalidate class="form">
             <div class="row">
+
               <div class="col-md-4">
+                <div class="form-group">
+                  <input type="hidden" formControlName="eId" placeholder="Employee Id" name="eId" class="form-control" value="0">
+               </div>
+               <!--Input Nombre-->
                 <div class="form-group mb-3">
                   <label for="exampleInputEmail1">Nombre</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="text" class="form-control" formControlName="nombre">
                 </div>
 
               </div>
               <div class="col-md-4">
+                <!--Input Apellido Paterno-->
                 <div class="form-group mb-3">
                   <label for="exampleInputPassword1">Apellido paterno</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" formControlName="apellidoP">
                 </div>
 
               </div>
               <div class="col-md-4">
+                <!--Apellido Materno-->
                 <div class="form-group mb-3">
                   <label for="exampleInputPassword1">Apellido materno</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" formControlName="apellidoM">
                 </div>
               </div>
 
@@ -35,14 +42,14 @@
                 <!--Input Fecha de Nacimiento-->
                 <div class="form-group">
                   <label for="exampleInputPassword1">Fecha de nacimiento</label>
-                  <input type="date" class="form-control" id="exampleInputPassword1">
+                  <input type="date" class="form-control" formControlName="fechaNac">
                 </div>
               </div>
               <div class="col-md-4">
                 <!--Input correo-->
                 <div class="form-group">
                   <label for="correo" >E-mail: </label>
-                  <input type="email" formControlName="correo" placeholder="Correo electronico" name="correo" class="form-control">
+                  <input type="email" formControlName="correo" placeholder="Correo electronico" name="correo" class="form-control" formControlName="correo">
                 </div>
               </div>
 
@@ -51,21 +58,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Puesto</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" formControlName="puesto">
                 </div>
               </div>
               <div class="col-md-4">
                 <!--Input Salario-->
                 <div class="form-group input-group-sm mb-3">
                   <label for="salario">Salario: </label>
-                  <input type="number" formControlName="salario" placeholder="Salario del trabajador" name="salario" class="form-control">
+                  <input type="number" placeholder="Salario del trabajador" name="salario" class="form-control" formControlName="salario">
                 </div>
               </div>
               <div class="col-md-4">
                 <!--Input contratista-->
                 <div class="form-group input-group-sm mb-3">
                   <label for="contratista" >Contratista: </label>
-                  <select name="contratista" class="form-control" formControlName="contratista" placeholder="Seleccione una opcion">
+                  <select name="contratista" class="form-control" placeholder="Seleccione una opcion" formControlName="contratista">
                       <option value="" disabled selected>Seleccione si es contratista</option>
                       <option value="0">No</option>
                       <option value="1">Si</option>
@@ -75,7 +82,7 @@
             </div>
             <div class="row">
               <div class="col-md-3 ml-auto">
-                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                <button type="submit" class="btn btn-primary btn-block" (click)="onSubmit()">Enviar</button>
               </div>
             </div>
           </form>

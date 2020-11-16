@@ -8,6 +8,7 @@ import { ViewComponent } from './view/view.component';
 
 import { RouterModule, Routes } from '@angular/router'; //importar modulo Router
 import { HttpClientModule } from '@angular/common/http'; //importar modulo HTTP
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'add', component: AddComponent },
@@ -26,6 +27,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
       //{ enableTracing: true } // <-- debugging purposes only
