@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -10,7 +11,8 @@ import { EmployeeService } from '../employee.service';
 export class AddComponent implements OnInit {
 
   constructor(private empService: EmployeeService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private router : Router) { }
 
   addForm: FormGroup;
   ngOnInit() {
@@ -31,6 +33,10 @@ export class AddComponent implements OnInit {
   onSubmit(){
     if(this.addForm.status == 'VALID'){
       alert('Enviando los datos...');
+      this.empService.createEmployee(this.addForm.value)
+      .subscribe(data =>{
+        this.router.navigate(['view']);
+      })
     }else if(this.addForm.status == 'INVALID'){
       alert("Error al enviar el Formulario... Revise los datos por favor");
     }

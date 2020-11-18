@@ -13,4 +13,11 @@ export class EmployeeService {
   getData() {
     return this.http.get(this.url+'list.php');
   }
+
+  createEmployee(employee: any[]){
+    return this.http.post(this.url+'insert.php', employee);
+  }
+
+
+
 }
