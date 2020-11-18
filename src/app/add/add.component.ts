@@ -14,21 +14,28 @@ export class AddComponent implements OnInit {
 
   addForm: FormGroup;
   ngOnInit() {
+    //Obteniendo datos del formulario y analizando las reglas de validacion
     this.addForm = this.formBuilder.group({
       eId:[],
-      nombre: [''],
-      apellidoP: [''],
-      apellidoM: [''],
-      puesto: [''],
-      fechaNac: [''],
-      correo:[''],
-      salario: [''],
-      contratista: ['']
+      nombre: ['',[Validators.required, Validators.maxLength(20)]],
+      apellidoP: ['',[Validators.required, Validators.maxLength(20)]],
+      apellidoM: ['',[Validators.required, Validators.maxLength(20)]],
+      puesto: ['',[Validators.required, Validators.maxLength(50)]],
+      fechaNac: ['', [Validators.required]],
+      correo:['', [Validators.required, Validators.email]],
+      salario: ['', [Validators.required, Validators.maxLength(5)]],
+      contratista: ['', Validators.required]
     })
   }
 
   onSubmit(){
-    console.log(this.addForm.value);
+    if(this.addForm.status == 'VALID'){
+      alert('Enviando los datos...');
+    }else if(this.addForm.status == 'INVALID'){
+      alert("Error al enviar el Formulario... Revise los datos por favor");
+    }
+    //console.log(this.addForm.value);
+    console.log(this.addForm.status);
   }
 
 }
