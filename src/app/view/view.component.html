@@ -22,21 +22,58 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let emp of employees">
-            <th><span class="font-weight-light">{{emp.id}}</span></th>
-            <th><span class="font-weight-light">{{emp.nombre}}</span></th>
-            <th><span class="font-weight-light">{{emp.apellidop}}</span></th>
-            <th><span class="font-weight-light">{{emp.apellidom}}</span></th>
-            <th><span class="font-weight-light">{{emp.fechanac}}</span></th>
-            <th><span class="font-weight-light">{{emp.puesto}}</span></th>
-            <th><span class="font-weight-light">{{emp.salario}}</span></th>
-            <th><span class="font-weight-light">{{emp.correo}}</span></th>
-            <th><span class="font-weight-light">{{emp.contratista ? 'Si': 'No'}}</span></th>
-            <th><button class="btn btn-warning" (click)="edit(emp)">Edit</button></th>
-            <th><button class="btn btn-danger" (click)="delete(emp)">Delete</button></th>
-          </tr>
+          <div *ngIf="dataExist == true; then thenBlock else elseBlock"></div>
+          <!--Pintar si la variable es verdadero-->
+          <ng-template #thenBlock>
+            <!--Recorrer y pintar los datos obtenidos en employees-->
+            <tr *ngFor="let emp of employees | paginate: { itemsPerPage: pageSize, currentPage: pageActual}">
+              <th><span class="font-weight-light">{{emp.id}}</span></th>
+              <th><span class="font-weight-light">{{emp.nombre}}</span></th>
+              <th><span class="font-weight-light">{{emp.apellidop}}</span></th>
+              <th><span class="font-weight-light">{{emp.apellidom}}</span></th>
+              <th><span class="font-weight-light">{{emp.fechanac}}</span></th>
+              <th><span class="font-weight-light">{{emp.puesto}}</span></th>
+              <th><span class="font-weight-light">{{emp.salario}}</span></th>
+              <th><span class="font-weight-light">{{emp.correo}}</span></th>
+              <th><span class="font-weight-light">{{emp.contratista ? 'Si': 'No'}}</span></th>
+              <th><button class="btn btn-warning" (click)="edit(emp)">Edit</button></th>
+              <th><button class="btn btn-danger" (click)="delete(emp)">Delete</button></th>
+              </tr>
+          </ng-template>
+          <!--Pintar si la variable es false-->
+          <ng-template #elseBlock>
+            <tr>
+              <th colspan="11" class="bg-light" style="text-align: center;"><span class="font-weight-light ">No existen datos para mostrar</span></th>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
     </div>
   </div>
+  <!--Nuevo row para la paginacion de la tabla-->
+  <div class="row">
+    <div class="col-md-4 text-center" >
+      <!--Controles de paginacion-->
+        <pagination-controls (pageChange)="pageActual = $event" directionLinks="true"
+          autoHide="true"
+          responsive="true"
+          previousLabel="Anterior"
+          nextLabel="Siguiente">
+        </pagination-controls>
+    </div>
+    <div class="col-md-4 text-center" >
+      <!--Controles para items por pagina-->
+        <div class="input-group mb-3">
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+                <option [ngValue]="2">2 items por pagina</option>
+                <option [ngValue]="4">4 items por pagina</option>
+                <option [ngValue]="6">6 items por pagina</option>
+                <option [ngValue]="10">10 items por pagina </option>
+              </select>
+          </div>
+    </div>
+    <div class="col-md-4 text-center" >
+        El salario total de los trabajadores es: {{salarioT}}
+    </div>
+</div>
 </div>

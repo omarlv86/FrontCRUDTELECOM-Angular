@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup , Validators } from '@angular/forms';
-import { EmployeeService } from '../employee.service';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup , Validators } from '@angular/forms'; //importando la libreria de Forms
+import { EmployeeService } from '../employee.service'; //Importando el Servicio Employee
+import { Router } from '@angular/router'; //Importando la libreria de Router
 
 @Component({
   selector: 'app-add',
@@ -31,17 +31,20 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit(){
+    //Validando el status del formulario
     if(this.addForm.status == 'VALID'){
+      //Si es Valido envia los daos al servicio usando la funcion createEmployee y redirige a la vista View
       alert('Enviando los datos...');
       this.empService.createEmployee(this.addForm.value)
       .subscribe(data =>{
         this.router.navigate(['view']);
       })
     }else if(this.addForm.status == 'INVALID'){
+      //Si no es Valido manda una alerta al usuario
       alert("Error al enviar el Formulario... Revise los datos por favor");
     }
     //console.log(this.addForm.value);
-    console.log(this.addForm.status);
+    //console.log(this.addForm.status);
   }
 
 }

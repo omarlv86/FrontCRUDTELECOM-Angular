@@ -8,8 +8,10 @@ import { ViewComponent } from './view/view.component';
 
 import { RouterModule, Routes } from '@angular/router'; //importar modulo Router
 import { HttpClientModule } from '@angular/common/http'; //importar modulo HTTP
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //Importar el modulo forms
+import { NgxPaginationModule} from 'ngx-pagination'; //Importando el modulo NgxPagination
 
+//Declarando las rutas de la aplicacion
 const appRoutes: Routes = [
   { path: 'add', component: AddComponent },
   { path: 'view', component: ViewComponent, pathMatch: 'full' },
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
     RouterModule.forRoot(
       appRoutes
       //{ enableTracing: true } // <-- debugging purposes only
