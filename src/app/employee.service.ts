@@ -30,6 +30,11 @@ export class EmployeeService {
     return this.http.get(this.url+"getById.php?id=" + id);
   }
 
+  //ACtualizar un empleado
+  updateEmployee(employee:any){
+    return this.http.put(this.url+'update.php?id='+employee.id, employee);
+  }
+
 
 
 }

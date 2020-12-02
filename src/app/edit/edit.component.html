@@ -1,1 +1,159 @@
-<p>edit works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 py-3">
+      <div class="row py-3">
+        <h2 class="mx-auto">Editar empleado</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="editForm" novalidate class="form">
+            <div class="form-group">
+              <input type="hidden" formControlName="id" placeholder="Employee Id" name="eId" class="form-control" value="0">
+            </div>
+            <div class="row">
+              <!--Div del Input nombre-->
+              <div class="col-md-4">
+                <!--Input Nombre-->
+                 <div class="form-group mb-3">
+                   <label class="font-weight-bold" for="exampleInputEmail1">Nombre</label>
+                   <input type="text" class="form-control" formControlName="nombre">
+                 </div>
+                 <!--Alerta si Nombre no fue ingresado-->
+                <div class="alert alert-danger" *ngIf="editForm.get('nombre').hasError('required') && editForm.get('nombre').touched">
+                  <span class="f-12">Ingrese el nombre del empleado</span>
+                </div>
+                <!--Alerta si el Nombre supera el tamaño permitido de caracteres-->
+                <div class="alert alert-danger" *ngIf="editForm.get('nombre').hasError('maxlength') && editForm.get('nombre').touched">
+                  <span class="f-12">Solo se permiten 20 caracteres</span>
+                </div>
+
+               </div>
+               <!--Div del input Apellido Paterno-->
+                <div class="col-md-4">
+                  <!--Input Apellido Paterno-->
+                  <div class="form-group mb-3">
+                    <label class="font-weight-bold" for="exampleInputPassword1">Apellido paterno</label>
+                    <input type="text" class="form-control" formControlName="apellidoP">
+                  </div>
+                  <!--Alerta si el ApellidoP no fue ingresado-->
+                <div class="alert alert-danger" *ngIf="editForm.get('apellidoP').hasError('required') && editForm.get('apellidoP').touched">
+                  <span class="f-12">Ingrese el apellido paterno del empleado</span>
+                </div>
+                <!--Alerta si el ApellidoP supera el tamaño permitido de caracteres-->
+                <div class="alert alert-danger" *ngIf="editForm.get('apellidoP').hasError('maxlength') && editForm.get('apellidoP').touched">
+                  <span class="f-12">Solo se permiten 20 caracteres</span>
+                </div>
+
+                </div>
+                <!--Div del Input Apellido Materno-->
+                <div class="col-md-4">
+                  <!--Apellido Materno-->
+                  <div class="form-group mb-3">
+                    <label class="font-weight-bold"for="exampleInputPassword1">Apellido materno</label>
+                    <input type="text" class="form-control" formControlName="apellidoM">
+                  </div>
+                  <!--Alerta si el ApellidoM no fue ingresado-->
+                  <div class="alert alert-danger" *ngIf="editForm.get('apellidoM').hasError('required') && editForm.get('apellidoM').touched">
+                    <span class="f-12">Ingrese el apellido materno del empleado</span>
+                  </div>
+                  <!--Alerta el ApellidoM supera el tamaño permitido de caracteres-->
+                  <div class="alert alert-danger" *ngIf="editForm.get('apellidoM').hasError('maxlength') && editForm.get('apellidoM').touched">
+                    <span class="f-12">Solo se permiten 20 caractres</span>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <!--div campo Fecha de nacimiento-->
+              <div class="col-md-4">
+                <!--Input Fecha de Nacimiento-->
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" formControlName="fechaNac">
+                </div>
+                <!--Alerta si fechaNac no fue ingresada-->
+                <div class="alert alert-danger" *ngIf="editForm.get('fechaNac').hasError('required') && editForm.get('fechaNac').touched">
+                  <span class="f-12">Seleccione la fecha de nacimiento</span>
+                </div>
+              </div>
+              <!-- div campo correo -->
+              <div class="col-md-4">
+                <!--Input correo-->
+                <div class="form-group">
+                  <label for="correo" >E-mail: </label>
+                  <input type="email" formControlName="correo" placeholder="Correo electronico" name="correo" class="form-control" formControlName="correo">
+                </div>
+                <!--Alerta si no se ingreso el Correo -->
+                <div class="alert alert-danger" *ngIf="editForm.get('correo').hasError('required') && editForm.get('correo').touched">
+                  <span class="f-12">Ingrese el correo del empleado</span>
+                </div>
+                <!--Alerta si el correo no cumple la validacion de correo-->
+                <div class="alert alert-danger" *ngIf="editForm.get('correo').hasError('email') && editForm.get('correo').touched">
+                  <span class="f-12">Ingrese un correo valido</span>
+                </div>
+
+              </div>
+            </div>
+            <div class="row"><!--div para el input Puesto-->
+              <div class="col-md-4">
+                <!--Input puesto-->
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Puesto</label>
+                  <input type="text" class="form-control" formControlName="puesto">
+                </div>
+                <!--Alerta si no se ingreso el puesto del empleado-->
+                <div class="alert alert-danger" *ngIf="editForm.get('puesto').hasError('required') && editForm.get('puesto').touched">
+                  <span class="f-12">Ingrese el puesto del empleado</span>
+                </div>
+                <!--Alerta si el puesto ingresado excede el limite de caracteres permitidos-->
+                <div class="alert alert-danger" *ngIf="editForm.get('puesto').hasError('maxlength') && editForm.get('puesto').touched">
+                  <span class="f-12">El limite de caracteres es 50</span>
+                </div>
+
+              </div>
+              <!--dv para el campo salario-->
+              <div class="col-md-4">
+                <!--Input Salario-->
+                <div class="form-group input-group-sm mb-3">
+                  <label for="salario">Salario: </label>
+                  <input type="number" placeholder="Salario del trabajador" name="salario" class="form-control" formControlName="salario">
+                </div>
+                <!--Alerta salario Required-->
+                <div class="alert alert-danger" *ngIf="editForm.get('salario').hasError('required') && editForm.get('salario').touched">
+                  <span class="f-12">Inserte el salario del empleado</span>
+                </div>
+                <!--Alerta el salario excedio el limite de caracteres validos-->
+                <div class="alert alert-danger" *ngIf="editForm.get('salario').hasError('maxlength') && editForm.get('salario').touched">
+                  <span class="f-12">El salario excedio el limite de 5 caracteres</span>
+                </div>
+
+              </div>
+              <!--div campo contratista-->
+              <div class="col-md-4">
+                <!--Input contratista-->
+                <div class="form-group input-group-sm mb-3">
+                  <label for="contratista" >Contratista: </label>
+                  <select name="contratista" class="form-control" placeholder="Seleccione una opcion" formControlName="contratista">
+                      <option value="" disabled selected>Seleccione si es contratista</option>
+                      <option value="0">No</option>
+                      <option value="1">Si</option>
+                  </select>
+                </div>
+                <!--Alerta Required-->
+                <div class="alert alert-danger" *ngIf="editForm.get('contratista').hasError('required') && editForm.get('contratista').touched">
+                  <span class="f-12">Selecciona si el empleado es contratista o no</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <!--Div para el boton de enviar o submit-->
+              <div class="col-md-3 ml-auto">
+                <button type="submit" class="btn btn-primary btn-block" (click)="update()">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
